@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.team17.desking.entity.Booking;
+import org.springframework.data.repository.query.Param;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
 
@@ -26,6 +27,8 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 	@Query("select u from user u join booking b on u.userId = b.userID where TIMESTAMPDIFF(DAY,b.dateOfBooking,NOW()) < 1")
 	public List<User> getUsers();
 
+	@Query("from booking where date_of_booking like :d%")
+	List<Booking> findByDateOfBooking(@Param("d") String d);
 
 
 }
