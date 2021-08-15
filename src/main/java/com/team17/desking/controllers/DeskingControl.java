@@ -4,6 +4,7 @@ import com.team17.desking.entity.Seat;
 import com.team17.desking.repository.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class DeskingControl {
 
     @Autowired
     private SeatRepository repository;
+    @CrossOrigin()
     @GetMapping("/")
     public String checkStart(){
         return "Hosting is Working Great";
@@ -21,7 +23,9 @@ public class DeskingControl {
     public Iterable<Seat> getSeats() {
         return repository.findAll();
     }
+    
 
+    @CrossOrigin
     @GetMapping("desking/buildings/{id}")
     public List<Seat> getSeatsByBuildingId(@PathVariable("id") Long id) {
         return repository.findByBuildingId(id);
