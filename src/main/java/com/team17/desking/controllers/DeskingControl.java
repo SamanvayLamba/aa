@@ -19,6 +19,7 @@ public class DeskingControl {
         return "Hosting is Working Great";
     }
 
+    @CrossOrigin()
     @GetMapping("seats")
     public Iterable<Seat> getSeats() {
         return repository.findAll();
@@ -30,7 +31,9 @@ public class DeskingControl {
     public List<Seat> getSeatsByBuildingId(@PathVariable("id") Long id) {
         return repository.findByBuildingId(id);
     }
+    
 
+    @CrossOrigin()
     @PostMapping("seats/add")
     public Seat bookSeat(@RequestBody Seat seat) {
         return repository.save(seat);
