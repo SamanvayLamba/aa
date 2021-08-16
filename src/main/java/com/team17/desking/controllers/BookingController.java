@@ -61,7 +61,10 @@ public class BookingController {
 	@CrossOrigin()
 	@DeleteMapping("/desking/booking/{bookingId}")
 	public void delete(@PathVariable Long bookingId) {
-	    bookrepo.deleteById(bookingId);
+		Booking booking = bookrepo.getById(bookingId);
+		Long seatId = booking.getSeatID();
+		seatrepo.makeSeatAvailable(seatId);
+		bookrepo.deleteById(bookingId);
 	}
 
 	@CrossOrigin()
