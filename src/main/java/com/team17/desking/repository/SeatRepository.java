@@ -18,5 +18,10 @@ public interface SeatRepository extends JpaRepository<Seat,Long> {
     @Transactional
     @Query("update seat s set s.blocked = ?1 where s.seatId = ?2")
     void setSeatBlockStatus(Boolean blockStatus, Long seat_id);
+    
+    @Modifying(clearAutomatically = true)
+    @Transactional
+    @Query("update seat s set s.booked=1 where s.seatId = ?1")
+    void setSeatBookStatus(Long seat_id);
 
 }
