@@ -61,7 +61,7 @@ public class BookingController {
 	@GetMapping("/desking/booking/alldetails")
  	public List<Object> getBookingDetailAll()
  	{
-  	return bookingRepository.getBookingDetails();
+  	return bookrepo.getBookingDetails();
  	}
 
 
