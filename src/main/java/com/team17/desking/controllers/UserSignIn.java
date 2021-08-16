@@ -14,7 +14,7 @@ public class UserSignIn {
 
     @CrossOrigin()
     @PostMapping("/desking/signin")
-    public boolean Authenticate(@RequestBody User user) {
+    public User Authenticate(@RequestBody User user) {
 
         User u = repository.findByEmail(user.getEmail());
         if(u != null)
