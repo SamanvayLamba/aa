@@ -117,6 +117,7 @@ public class BookingController {
 		return r;
 	}
 	
+	@CrossOrigin()
         @GetMapping("/desking/seatsbooked/{date}")
 	public List<Seat> seatsBooked(@PathVariable String date){
 		
