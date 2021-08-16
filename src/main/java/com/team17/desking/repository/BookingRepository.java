@@ -28,7 +28,10 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 	public List<User> getUsers();
 
 	@Query("from booking where date_of_booking like :d%")
-	List<Booking> findByDateOfBooking(@Param("d") String d);
+	public List<Booking> findByDateOfBooking(@Param("d") String d);
+	
+	@Query("select u.userId, u.fName, u.lName, b.bookingId, b.seatID from user u join booking b on u.userId=b.userID")
+ 	public List<Object> getBookingDetails();
 
 
 }
