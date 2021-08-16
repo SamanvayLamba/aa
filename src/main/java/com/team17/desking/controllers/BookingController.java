@@ -45,12 +45,19 @@ public class BookingController {
 	public List<Object> getUserBookings(@PathVariable Long userId){
 		return bookrepo.getUserBookingsAndSeatInfo(userId);	
 	}
+	
 	@CrossOrigin()
 	@PostMapping("/desking/booking/create")
 	public Long add(@RequestBody Booking booking) {
-	    Booking newBooking = bookrepo.save(booking);
-	    return newBooking.getBookingId();
+		Seat s = seatrepo.getById(booking.getSeatID());
+		if(!s.isBooked() && !s.isBlocked()) {
+			Booking newBooking = bookrepo.save(booking);
+			seatrepo.setSeatBookStatus(s.getSeatId());
+	    	return newBooking.getBookingId();
+		}
+		else return (long) 0;		
 	}
+	
 	@CrossOrigin()
 	@DeleteMapping("/desking/booking/{bookingId}")
 	public void delete(@PathVariable Long bookingId) {
