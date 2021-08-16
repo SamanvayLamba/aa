@@ -45,6 +45,8 @@ public class BookingController {
 	public List<Object> getUserBookings(@PathVariable Long userId){
 		return bookrepo.getUserBookingsAndSeatInfo(userId);	
 	}
+	
+	@CrossOrigin()
 	@PostMapping("/desking/booking/create")
 	public Long add(@RequestBody Booking booking) {
 		Seat s = seatrepo.getById(booking.getSeatID());
