@@ -26,6 +26,9 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 
 	@Query("select u from user u join booking b on u.userId = b.userID where TIMESTAMPDIFF(DAY,b.dateOfBooking,NOW()) < 1")
 	public List<User> getUsers();
+	
+	@Query("select s.booked from seat s where s.seatId=?1")
+   	Boolean checkBookedStatus(Long seat_id);
 
 	@Query("from booking where date_of_booking like :d%")
 	public List<Booking> findByDateOfBooking(@Param("d") String d);
