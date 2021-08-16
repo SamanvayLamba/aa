@@ -18,7 +18,8 @@ public class UserSignIn {
 
         User u = repository.findByEmail(user.getEmail());
         if(u != null)
-            return true;
-        return false;
+            return u;
+           // return true;
+        return null;
     }
 }
