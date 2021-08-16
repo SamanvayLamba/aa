@@ -117,5 +117,20 @@ public class BookingController {
 		return r;
 	}
 	
+        @GetMapping("/desking/seatsbooked/{date}")
+	public List<Seat> seatsBooked(@PathVariable String date){
+		
+		List<Seat> res = new ArrayList<>();
+		
+		List<Booking> bookings = bookrepo.findByDateOfBooking(date);
+		for(Booking b: bookings) {
+			res.add(seatrepo.findById(b.getSeatID()).orElse(null));
+		}
+		System.out.println(bookings);
+		
+		return res;
+		
+	}
+	
 
 }
