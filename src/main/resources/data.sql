@@ -20,6 +20,7 @@ INSERT INTO USER VALUES(7,"Shreyas","Kelshikar","User",2,"shreyas@gmail.com");
 INSERT INTO USER VALUES(8,"Harsh","Shelar","User",2,"harsh@gmail.com");
 INSERT INTO USER VALUES(9,"Samanvay","Lamba","User",3,"samanvay@gmail.com");
 INSERT INTO USER VALUES(10,"Anshuman","Tripathi","User",3,"anshuman@gmail.com");
+INSERT INTO USER VALUES(11,"Admin","Rkit","admin",0,"admin@gmail.com");
 
 INSERT INTO BUILDING VALUES(1,"Yerwada",3);
 INSERT INTO BUILDING VALUES(2,"Magarpatta",3);
