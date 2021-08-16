@@ -57,6 +57,12 @@ public class BookingController {
 	    bookrepo.deleteById(bookingId);
 	}
 
+	@CrossOrigin()
+	@GetMapping("/desking/booking/alldetails")
+	public List<Object> getBookingDetailAll()
+	{
+		return bookrepo.getBookingDetails();
+	}
 
 	@CrossOrigin()
 	@GetMapping("/desking/getrecommendations/{userId}/{date}")
