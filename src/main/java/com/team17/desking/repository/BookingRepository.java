@@ -24,7 +24,7 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 	@Query("SELECT book FROM booking book WHERE book.userID=?1")
 	public List<Booking> getUserBookings(Long userId);
 
-	@Query("select u from user u join booking b on u.userId = b.userID where TIMESTAMPDIFF(DAY,b.dateOfBooking,NOW()) < 1")
+	@Query("select u from user u join booking b on u.userId = b.userID where TIMESTAMPDIFF(DAY,b.dateOfBooking,NOW()) = 0")
 	public List<User> getUsers();
 	
 	@Query("select s.booked from seat s where s.seatId=?1")
